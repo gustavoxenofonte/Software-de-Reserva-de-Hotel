@@ -58,6 +58,6 @@ def cadastrarQuarto(number: int,name: str,capacity: int,daily_value: float,free:
         raise FreeNotBool("Livre não é um boleano")
 
     # Fazer o cadastro do quarto
-    with open("./database/roomsDatabase/roomsDatabase.csv", "a", newline='') as database:
+    with open("./database/roomsDatabase/roomsDatabase.csv", "a", newline='', encoding='utf-8') as database:
         write = writer(database)
         write.writerow([number, name, capacity, daily_value, free])
