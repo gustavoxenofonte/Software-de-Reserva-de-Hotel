@@ -9,5 +9,6 @@ arquivo.close()
 
 from .cadastrarQuarto import *
 from .excluirQuarto import *
+from .alterarStatusQuarto import *
 
-__all__ = ['cadastrarQuarto', 'excluirQuarto']
+__all__ = ['cadastrarQuarto', 'excluirQuarto', 'alterarStatusQuarto']
