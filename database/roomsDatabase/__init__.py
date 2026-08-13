@@ -8,5 +8,6 @@ except FileNotFoundError:   # Se não existente, criar
 arquivo.close()
 
 from .cadastrarQuarto import *
+from .excluirQuarto import *
 
-__all__ = ['cadastrarQuarto']
+__all__ = ['cadastrarQuarto', 'excluirQuarto']
