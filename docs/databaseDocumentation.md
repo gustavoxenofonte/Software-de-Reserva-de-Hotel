@@ -47,3 +47,13 @@
     - Utilizado para excluir o cadastro de um hóspede do banco de dados
     - `guest_cpf` deve ser no padrão: `00011122233` sem caracteres especiais
 
+<br>
+
+## Banco de dados Login Administrativo
+- Colunas: `user_name`, `password`
+
+### Funcionalidades
+- `cadastrar_login_administrativo(user_name: str, password: str)`
+    - Irá fazer o cadastro de login
+    - `user_name` deverá ser somente caracteres sem espaços
+    - `password` deverá ser somente caracteres sem espaços
