@@ -22,9 +22,9 @@
 ### Funcionalidades
 - `cadastrarReserva(room_number: int, guest_cpf_: str, checkin_date: date, checkout_date: date, total_value: float, status: str) -> None`
     - Deverá ser usado a biblioteca datetime pra criar os tipos date
-    - Status deve ser uma dessas opções: (reservada, hospedado, finalizada, cancelada)
+    - `status` deve ser uma dessas opções: (reservado, hospedado, finalizado, cancelado)
 - `listarReservas() -> list`
-    - Retorna uma lista de dicionários correspondente às reservas, em que as informações estão como esse exemplo: `linha['room_number'] = numero_do_quarto`
+    - Retorna uma lista de dicionários correspondente às reservas, em que as informações estão como esse exemplo: `[{'room_number': '10', 'guest_cpf': '00011122233'}]`
 - `check_in(guest_cpf: str) -> None`
     - Irá fazer o checkin do cliente, atualizará o status free do quarto para False, e da reserva para hospedado
 - `check_out(guest_cpf: str) -> float`
@@ -37,3 +37,13 @@
 
 ## Banco de dados dos Hóspedes
 - Colunas: `cpf`, `name`, `phone_number`, `age`
+
+### Funcionalidades
+- `cadastrarHospede(guest_cpf: str, name: str, phone_number: str, age: int) -> None`
+    - Utilizado para cadastrar hóspedes no banco de dados
+    - `guest_cpf` deve ser no padrão: `00011122233` sem caracteres especiais
+    - `phone_number` deve ser no padrão: `88988887777` sem caracteres especiais
+- `excluirHospede(guest_cpf: str) -> None`
+    - Utilizado para excluir o cadastro de um hóspede do banco de dados
+    - `guest_cpf` deve ser no padrão: `00011122233` sem caracteres especiais
+
