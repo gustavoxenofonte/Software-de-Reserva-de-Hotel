@@ -219,3 +219,4 @@ __marimo__/
 
 # Banco de dados
 /database/roomsDatabase/roomsDatabase.csv
+/database/reservationDatabase/reservationDatabase.csv
