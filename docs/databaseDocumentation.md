@@ -13,7 +13,7 @@
     - Exclui um quarto específico
 - `listarQuartos() -> list`
     - Retorna uma lista de dicionários correspondente aos quartos, em que as informações estão como esse exemplo: `linha['number'] = numero_do_quarto`
-- `quarto_existe(room_number: int) -> bool`
+- `quartoExiste(room_number: int) -> bool`
     - Retorna se o quarto com o número `room_number` existe
     - `True` = existe; `False` = não existe
 
@@ -28,14 +28,14 @@
     - `status` deve ser uma dessas opções: (reservado, hospedado, finalizado, cancelado)
 - `listarReservas() -> list`
     - Retorna uma lista de dicionários correspondente às reservas, em que as informações estão como esse exemplo: `[{'room_number': '10', 'guest_cpf': '00011122233'}]`
-- `check_in(guest_cpf: str) -> None`
+- `checkIn(guest_cpf: str) -> None`
     - Irá fazer o checkin do cliente, atualizará o status free do quarto para False, e da reserva para hospedado
-- `check_out(guest_cpf: str) -> float`
+- `checkOut(guest_cpf: str) -> float`
     - Irá retornar o valor total da hospedagem
     - Irá remover o hospede do banco de dados, atualizará o status free do quarto para True e a reserva para finalizada.
-- `cancelar_reserva(guest_cpf: str) -> None`
+- `cancelarReserva(guest_cpf: str) -> None`
     - Irá remover o hospede do banco de dados, e atualizar a reserva para cancelada.
-- `reserva_existe(guest_cpf: str) -> bool`
+- `reservaExiste(guest_cpf: str) -> bool`
     - Retorna se a reserva do cpf `guest_cpf` existe
     - `True` = existe; `False` = não existe
 
@@ -52,7 +52,7 @@
 - `excluirHospede(guest_cpf: str) -> None`
     - Utilizado para excluir o cadastro de um hóspede do banco de dados
     - `guest_cpf` deve ser no padrão: `00011122233` sem caracteres especiais
-- `hospede_existe(guest_cpf: str) -> bool` 
+- `hospedeExiste(guest_cpf: str) -> bool` 
     - Retorna se o hospede com o cpf `guest_cpf` existe
     - `True` = existe; `False` = não existe
 
@@ -62,13 +62,13 @@
 - Colunas: `user_name`, `password`
 
 ### Funcionalidades
-- `cadastrar_login_administrativo(user_name: str, password: str) -> None`
+- `cadastrarLoginAdministrativo(user_name: str, password: str) -> None`
     - Irá fazer o cadastro de login
     - `user_name` deverá ser somente caracteres sem espaços
     - `password` deverá ser somente caracteres sem espaços
-- `alterar_user_name(new_user_name: str) -> None`
+- `alterarUserName(new_user_name: str) -> None`
     - Irá mudar o nome de usuário
     - `new_user_name` deverá ser somente caracteres sem espaços
-- `alterar_senha(new_password: str) -> None`
+- `alterarSenha(new_password: str) -> None`
     - Irá mudar a senha
     - `new_password` deverá ser somente caracteres sem espaços
