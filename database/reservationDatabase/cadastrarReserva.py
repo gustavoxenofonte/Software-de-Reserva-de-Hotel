@@ -59,6 +59,7 @@ def cadastrarReserva(room_number: int, guest_cpf: str, checkin_date: date, check
     if status not in ['reservado', 'hospedado', 'finalizado', 'cancelado']:    # Verificar se status está no escopo (reservado, hospedado, finalizado, cancelado)
         raise StatusIsNotCorrect("Status não está no escopo (reservado, hospedado, finalizado, cancelado)")
 
+    # Faz a adição da reserva no banco de dados
     with open("./database/reservationDatabase/reservationDatabase.csv", "a", newline='', encoding='utf-8') as database:
         write = writer(database)
         write.writerow([room_number, guest_cpf, checkin_date, checkout_date, total_value, status])
