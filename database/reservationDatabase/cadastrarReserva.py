@@ -29,7 +29,7 @@ class TotalValueIsNotFloat(Exception):
 class StatusIsNotCorrect(Exception):
     pass
 
-def cadastrarReserva(room_number: int, guest_cpf: str, checkin_date: datetime, checkout_date: datetime, total_value: float, status: str) -> None:
+def cadastrarReserva(room_number: int, guest_cpf: str, checkin_date: date, checkout_date: date, total_value: float, status: str) -> None:
 
     # Verificações  
     if quartoExiste(room_number) == False:   # Verifica se o quarto existe
