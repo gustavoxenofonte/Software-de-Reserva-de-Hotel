@@ -25,7 +25,7 @@ def checkOut(guest_cpf: str) -> float:
     if len(guest_cpf) != 11:    # Verifica se o cpf tem 11 caracteres
         raise CPFAreNotCorrect("O cpf não está correto, não tem 11 números")
 
-    if reservaExiste() == False:    # Verifica se a reserva existe
+    if reservaExiste(guest_cpf) == False:    # Verifica se a reserva existe
         raise ReservationDontExists("A reserva não existe")
 
     # Cria uma lista com todas as reservas
