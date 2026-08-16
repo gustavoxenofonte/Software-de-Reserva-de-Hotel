@@ -8,7 +8,7 @@ def cadastro_quartos():      #FUNÇÃO PARA CADASTRO DE QUARTOS
     while True:
         try:          #Testa se o número digitado é menor ou igual a zero. Se o valor retornado for "True", imprime uma mensagem de erro e repete a pergunta
             numero = int(input("Digite o número correspondente ao quarto: "))
-            while numero <= 0:
+            while numero <= 0 or numero > 100:
                 print(f"{vermelho}ERRO! NÚMERO DE QUARTO INVÁLIDO!{reset}")
                 numero = int(input("Digite o número correspondente ao quarto: "))
             break  
@@ -19,7 +19,7 @@ def cadastro_quartos():      #FUNÇÃO PARA CADASTRO DE QUARTOS
     while True:
         try:          #Testa se o número digitado é menor que zero. Se o valor retornado for "True", imprime uma mensagem de erro e repete a pergunta
             andar = int(input("Digite em qual andar do hotel o quarto está localizado: "))
-            while andar < 0:
+            while andar < 0 or andar > 5:
                 print(f"{vermelho}ERRO! ANDAR NÃO RECONHECIDO!{reset}")
                 andar = int(input("Digite em qual andar do hotel o quarto está localizado: "))
             break
@@ -30,7 +30,7 @@ def cadastro_quartos():      #FUNÇÃO PARA CADASTRO DE QUARTOS
     while True:
         try:          #Testa se o número digitado é menor que um. Se o valor retornado for "True", imprime uma mensagem de erro e repete a pergunta
             acomodacao = int(input("Quantas pessoas esse quarto acomoda? "))
-            while acomodacao < 1:
+            while acomodacao < 1 or acomodacao > 4:
                 print(f"{vermelho}ERRO! OPÇÃO INVÁLIDA!{reset}")
                 acomodacao = int(input("Quantas pessoas esse quarto acomoda? "))
             break
@@ -48,29 +48,31 @@ def cadastro_quartos():      #FUNÇÃO PARA CADASTRO DE QUARTOS
         except ValueError:
             print(f"{vermelho}ERRO! OPÇÃO INVÁLIDA!{reset}")
 
-    print("Confirma as Informações para Cadastro?")
-    print("1.SIM")
-    print("2.NÃO")
-
-    x = int(input("Digite o número correspondente a opção desejada: "))
-    
-    if x == 1:
-            print(f"{verde}QUARTO CADASTRADO COM SUCESSO!{reset}")
-    
-    elif x == 2:
-            print(f"{vermelho}Faça seu cadastro novamente com as informações corretas{reset}")
-            cadastro_quartos()
-    
-    else:
+    while True:
+        print("Confirma as Informações para Cadastro?")
+        print("1.SIM")
+        print("2.NÃO")
+        try:
+            x = int(input("Digite o número correspondente a opção desejada: "))
+        except ValueError:
             print(f"{vermelho}ERRO! OPÇÃO INVÁLIDA!{reset}")
+            continue
 
-    #RETORNA OS VALORES INFORMADOS NO CADASTRO
-    return{
-        "Número": numero,
-        "Andar": andar,
-        "Acomodação": acomodacao,
-        "Categoria": categoria
-        }
+        if x == 1:
+            print(f"{verde}QUARTO CADASTRADO COM SUCESSO!{reset}")
+            return {
+                "Número": numero,
+                "Andar": andar,
+                "Acomodação": acomodacao,
+                "Categoria": categoria
+            }
+        
+        elif x == 2:
+            print(f"{vermelho}Faça seu cadastro novamente com as informações corretas{reset}")
+            return cadastro_quartos()   # Retorna para o início da função para o usuário alterar as informações incorretas
+        
+        else:
+            print(f"{vermelho}ERRO! OPÇÃO INVÁLIDA!{reset}")
             
 #ATRIBUE A FUNÇÃO "cadastro_quartos()" À VARIÁVEL "CADASTRO"
 cadastro = cadastro_quartos()
