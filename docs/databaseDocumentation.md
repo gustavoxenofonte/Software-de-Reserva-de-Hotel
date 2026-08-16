@@ -2,6 +2,21 @@
  
  <br>
 
+## Como importar os bancos de dados
+- Importando a partir da main
+ - `import database.<nomeDoBancoDeDados>`
+- Se importar a partir de uma pasta ou outro diretório e ocorrer o erro: `ImportError: attempted relative import with no known parent package`
+  - Utilize o seguinte código antes da importação:
+```
+import os
+import sys
+
+caminho_absoluto = os.path.abspath(os.curdir)
+sys.path.insert(0, caminho_absoluto)
+```
+
+- Se houver dúvidas sobre essa importação relativa, veja o vídeo: https://youtu.be/spXh5vDKaZU
+
 ## Banco de dados dos quartos
 - Colunas: `number`, `name` , `capacity`, `daily_value`, `free`
 ### Funcionalidades
@@ -23,9 +38,10 @@
 - Colunas:  `room_number`, `guest_cpf`, `checkin_date`, `checkout_date`, `total_value`, `status`
 
 ### Funcionalidades
-- `cadastrarReserva(room_number: int, guest_cpf_: str, checkin_date: date, checkout_date: date, total_value: float, status: str) -> None`
+- `cadastrarReserva(room_number: int, guest_cpf_: str, checkin_date: date, checkout_date: date, total_value: float, status: str="reservado") -> None`
     - Deverá ser usado a biblioteca datetime pra criar os tipos date
     - `status` deve ser uma dessas opções: (reservado, hospedado, finalizado, cancelado)
+    - Se não passar o parâmetro status, será definido reservado automaticamente
 - `listarReservas() -> list`
     - Retorna uma lista de dicionários correspondente às reservas, em que as informações estão como esse exemplo: `[{'room_number': '10', 'guest_cpf': '00011122233'}]`
 - `checkIn(guest_cpf: str) -> None`
