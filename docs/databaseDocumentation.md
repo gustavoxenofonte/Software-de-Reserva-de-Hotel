@@ -80,11 +80,13 @@ sys.path.insert(0, caminho_absoluto)
 ### Funcionalidades
 - `cadastrarLoginAdministrativo(user_name: str, password: str) -> None`
     - Irá fazer o cadastro de login
-    - `user_name` deverá ser somente caracteres sem espaços
-    - `password` deverá ser somente caracteres sem espaços
+    - `user_name` deverá ser somente caracteres sem espaços e não pode conter vírgula ( , )
+    - `password` deverá ser somente caracteres sem espaços e não pode conter vírgula ( , )
 - `alterarUserName(new_user_name: str) -> None`
     - Irá mudar o nome de usuário
-    - `new_user_name` deverá ser somente caracteres sem espaços
+    - `new_user_name` deverá ser somente caracteres sem espaços e não pode conter vírgula ( , )
 - `alterarSenha(new_password: str) -> None`
     - Irá mudar a senha
-    - `new_password` deverá ser somente caracteres sem espaços
+    - `new_password` deverá ser somente caracteres sem espaços e não pode conter vírgula ( , )
+- `adminExiste() -> bool`
+    - Verifica se existe login administrativo
