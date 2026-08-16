@@ -1,4 +1,10 @@
 import datetime ## biblioteca para tratar as datas
+import os
+import sys
+caminho_absoluto = os.path.abspath(os.curdir)
+sys.path.insert(0, caminho_absoluto)
+import database.roomsDatabase
+import database.reservationDatabase
 
 def cadastroReserva():
 
@@ -30,8 +36,8 @@ def cadastroReserva():
             except ValueError:
                 print("Valor inválido")
 
-        #cadastrarHospede(cpfHospede, nomeHospede, telefoneHospede, idade)
-                
+        #database.roomsDatabase.cadastrarHospede(cpfHospede, nomeHospede, telefoneHospede, idade)
+        
         while True:
             try:         
                 numeroQuarto = int(input("Número do quarto a ser reservado: "))
@@ -39,16 +45,23 @@ def cadastroReserva():
                     print("Número de quarto inválido")
                     numeroQuarto = int(input("Número do quarto a ser reservado: "))
 
-                #quartos = listarQuartos()                     #checa se o quarto existe no banco de dados
-                #for i in quartos:
-                #    if numeroQuarto != quartos[i]['number']:
-                #        pass
-                #    else:
-                #        print("Quarto válido")
-                #        quartoAtual = quartos[i]            #salva o quarto que está sendo cadastrado
-                #        break
-    
-                break
+                existe = False
+                if database.roomsDatabase.quartoExiste(numeroQuarto):           #checa se o quarto existe no banco de dados
+                    quartos = database.roomsDatabase.listarQuartos()            #salva uma lista com todos os quartos   
+                    for quarto in quartos:
+                        if numeroQuarto == int(quarto['number']):
+                            print("Quarto válido")
+                            valorquartoAtual = float(quarto['daily_value'])            #salva o quarto que está sendo cadastrado
+                            quartoAtualReservado = quarto['free']
+                            if quartoAtualReservado == 'True':
+                                quartoAtualReservado = True
+                            else:
+                                quartoAtualReservado = False
+                            break            
+                    break
+                else:
+                    print("Quarto não existe")
+                        
             except ValueError:
                 print("Valor inválido")
 
@@ -56,7 +69,7 @@ def cadastroReserva():
             try:
                 dataCheckin = str(input("Insira o a data de check-in(DD/MM/YYYY): ")).strip()
                 dataCheckin = datetime.date.strptime(f"{dataCheckin}", '%d/%m/%Y')    #transforma o str que o usuário digitou em uma variável do tipo date
-                while dataCheckin <= datetime.date.today():                             #verifica se a data de check-in é válida(apartir do próximo dia)
+                while dataCheckin < datetime.date.today():                             #verifica se a data de check-in é válida(apartir do próximo dia)
                     print("Data de check-in inválida")
                     dataCheckin = str(input("Insira o a data de check-in(DD/MM/YYYY): ")).strip()
                     dataCheckin = datetime.date.strptime(f"{dataCheckin}", '%d/%m/%Y')   
@@ -77,16 +90,17 @@ def cadastroReserva():
                 print("Valor inválido")
 
         diasHospedados = dataCheckout - dataCheckin
-        valorTotal = diasHospedados * quartoAtual['daily_value']
+        valorTotal = diasHospedados.days * valorquartoAtual  ##pega a variável diasHospedados em um número inteiro
 
-        if dataCheckin == datetime.date.today() and quartoAtual['free'] == True:        #confere se o quarto atual pode receber o check-in
-            cadastrarReserva(numeroQuarto, cpfHospede, dataCheckin, dataCheckout, valorTotal, 'hospedado')
-            alterarStatusQuarto(numeroQuarto, False)
-            check_in(cpfHospede)
+        if dataCheckin == datetime.date.today() and quartoAtualReservado == True:        #confere se o quarto atual pode receber o check-in
+            database.reservationDatabase.cadastrarReserva(numeroQuarto, cpfHospede, dataCheckin, dataCheckout, valorTotal, 'hospedado')
+            database.reservationDatabase.alterarStatusQuarto(numeroQuarto, False)
             print("Reserva Feita")
             print("Check-in automático realizado")
-        if dataCheckin == datetime.date.today() and quartoAtual['free'] == False:
+        elif dataCheckin == datetime.date.today() and quartoAtualReservado == False:      #caso o quarto já esteja hospedado, exibe o erro
             print("Erro na reserva, quarto reservado para o dia atual, reservar para o dia seguinte")
-        else:
-            cadastrarReserva(numeroQuarto, cpfHospede, dataCheckin, dataCheckout, valorTotal, 'reservado')
+        elif dataCheckin != datetime.date.today():
+            database.reservationDatabase.cadastrarReserva(numeroQuarto, cpfHospede, dataCheckin, dataCheckout, valorTotal, 'reservado')
             print("Reserva Feita")
+
+cadastroReserva()
