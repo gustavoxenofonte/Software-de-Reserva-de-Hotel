@@ -10,5 +10,6 @@ arquivo.close()
 from .cadastrarLoginAdministrativo import *
 from .alterarSenha import *
 from .alterarUserName import *
+from .adminExiste import *
 
-__all__ = ['cadastrarLoginAdministrativo', 'alterarSenha', 'alterarUserName']
+__all__ = ['cadastrarLoginAdministrativo', 'alterarSenha', 'alterarUserName', 'adminExiste']
