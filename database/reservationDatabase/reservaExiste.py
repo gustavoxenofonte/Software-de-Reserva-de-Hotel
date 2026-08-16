@@ -17,7 +17,7 @@ def reservaExiste(guest_cpf: str) -> bool:
             reader = DictReader(database)
 
             for row in reader:
-                 if row['guest_cpf'] == guest_cpf:
-                      return True                      # Se houver uma reserva no cpf fornecido retorna True
-
+                if row['guest_cpf'] == guest_cpf:
+                    if row['status'] in ['reservado', 'hospedado']:
+                         return True
     return False                                       # Senão, retorna False
