@@ -41,7 +41,8 @@ def checkOut(guest_cpf: str) -> float:
                 raise ReservationAlreadyCancelled("A reserva já estava cancelada")
 
             row['status'] = 'finalizado'    # Define o status da reserva pra finalizado
-            room = row['room_number']       # Salva o número do quarto
+            room = row['room_number']    # Salva o número do quarto
+            total_value = row['total_value']    # Salva  o valor total da reserva
 
     # Reescreve o banco de dados das reservas atualizado
     fieldnames = ['room_number', 'guest_cpf', 'checkin_date', 'checkout_date', 'total_value', 'status']
@@ -55,3 +56,5 @@ def checkOut(guest_cpf: str) -> float:
 
     # Remover o hóspede do banco de dados de hóspedes
     # excluirHospede(guest_cpf)    (liberar após a criação do banco de dados de hóspedes)
+
+    return total_value    # Retorna o valor total da reserva
