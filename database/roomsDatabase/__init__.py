@@ -11,5 +11,6 @@ from .cadastrarQuarto import *
 from .excluirQuarto import *
 from .alterarStatusQuarto import *
 from .listarQuartos import *
+from .quartoExiste import *
 
-__all__ = ['cadastrarQuarto', 'excluirQuarto', 'alterarStatusQuarto', 'listarQuartos']
+__all__ = ['cadastrarQuarto', 'excluirQuarto', 'alterarStatusQuarto', 'listarQuartos', 'quartoExiste']
