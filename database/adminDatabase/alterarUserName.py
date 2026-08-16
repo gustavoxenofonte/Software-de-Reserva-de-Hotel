@@ -23,7 +23,7 @@ def alterarUserName(new_user_name: str) -> None:
     if len(new_user_name) == 0 :
         raise NullUserName("User name não pode ser vazio")
 
-    # Adicionar no banco de dados
+    # Alterar no banco de dados
     with open("./database/adminDatabase/adminDatabase.csv", "r", encoding='utf-8') as database:
         databaseList = list(reader(database))
         databaseList[1][0] = new_user_name
