@@ -102,5 +102,3 @@ def cadastroReserva():
         elif dataCheckin != datetime.date.today():
             database.reservationDatabase.cadastrarReserva(numeroQuarto, cpfHospede, dataCheckin, dataCheckout, valorTotal, 'reservado')
             print("Reserva Feita")
-
-cadastroReserva()
