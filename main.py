@@ -73,14 +73,3 @@ def menu_principal():
     
 if login_adm():
     menu_principal()
-else:
-    print("Senha incorreta!")
-
-
-
-
-
-
-
-
-

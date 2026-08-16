@@ -8,18 +8,25 @@ def login_adm():
     print("== TELA DE LOGIN ==")
     while True:
         if adminExiste():
-            usuario = str(input("Usuário: "))
-            senha = str(input("Senha: "))
             caminho = Path("database/adminDatabase/adminDatabase.csv")
 
             with open(caminho, 'r', encoding='utf-8') as arquivo:
                 leitor = DictReader(arquivo)
-                for linha in leitor:
-                    if linha["user_name"] == usuario and linha["password"] == senha:
-                        return True
-                        
-                    else:
-                        return False
+
+                for tentativas in range (3, 0, -1):
+                    usuario = str(input("Usuário: "))
+                    senha = str(input("Senha: "))
+
+                    for linha in leitor:   
+                        if linha["user_name"] == usuario and linha["password"] == senha:
+                            return True
+                            
+                    if tentativas > 1:
+                        print(f"Senha incorreta, você possui mais {tentativas - 1} tentativas.")
+
+                    if tentativas == 1:
+                        print("Você excedeu o número de tentativas")
+                        exit()
 
         else:
             while True:
