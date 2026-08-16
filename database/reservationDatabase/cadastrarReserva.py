@@ -1,6 +1,7 @@
-from csv import writer
+from csv import writer, DictReader
 from datetime import date
 from ..roomsDatabase import quartoExiste
+from .reservaExiste import reservaExiste
 
 class RoomDontExists(Exception):
     pass
@@ -29,7 +30,10 @@ class TotalValueIsNotFloat(Exception):
 class StatusIsNotCorrect(Exception):
     pass
 
-def cadastrarReserva(room_number: int, guest_cpf: str, checkin_date: date, checkout_date: date, total_value: float, status: str) -> None:
+class ReservationAlreadyExists(Exception):
+    pass
+
+def cadastrarReserva(room_number: int, guest_cpf: str, checkin_date: date, checkout_date: date, total_value: float, status: str='reservado') -> None:
 
     # Verificações  
     if quartoExiste(room_number) == False:   # Verifica se o quarto existe
@@ -58,6 +62,14 @@ def cadastrarReserva(room_number: int, guest_cpf: str, checkin_date: date, check
 
     if status not in ['reservado', 'hospedado', 'finalizado', 'cancelado']:    # Verificar se status está no escopo (reservado, hospedado, finalizado, cancelado)
         raise StatusIsNotCorrect("Status não está no escopo (reservado, hospedado, finalizado, cancelado)")
+
+    # Verificar se já existe reserva ativa no cpf
+    with open("./database/reservationDatabase/reservationDatabase.csv", "r", encoding='utf-8') as database:
+        reader = DictReader(database)
+        for row in reader:
+            if row['guest_cpf'] == guest_cpf:
+                if row['status'] == 'reservado':
+                    raise ReservationAlreadyExists("Já existe uma reserva ativa nesse cpf")
 
     # Faz a adição da reserva no banco de dados
     with open("./database/reservationDatabase/reservationDatabase.csv", "a", newline='', encoding='utf-8') as database:
