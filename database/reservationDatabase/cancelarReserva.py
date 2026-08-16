@@ -11,10 +11,7 @@ class CPFAreNotCorrect(Exception):
 class ReservationDontExists(Exception):
     pass
 
-class ReservationCompleted(Exception):
-    pass
-
-class ReservationAlreadyCancelled(Exception):
+class ThereAreNoOpenReservations(Exception):
     pass
 
 def cancelarReserva(guest_cpf: str) -> None:
@@ -31,15 +28,17 @@ def cancelarReserva(guest_cpf: str) -> None:
     with open("./database/reservationDatabase/reservationDatabase.csv", "r", encoding='utf-8') as database:
         databaseList = list(DictReader(database))
 
+    # Verificar se há reservas em aberto
+    openReservations = False
     for row in databaseList:
         if row['guest_cpf'] == guest_cpf:
             # Verificação se a reserva está como finalizado ou cancelado
-            if row['status'] == 'finalizado':
-                raise ReservationCompleted("A reserva já foi finalizada")
-            elif row['status'] == 'cancelado':
-                raise ReservationAlreadyCancelled("A reserva já estava cancelada")
-
-            row['status'] = 'cancelado'    # Define o status da reserva pra cancelado
+            if row['status'] in ['reservado', 'hospedado']:
+                row['status'] = 'cancelado' 
+                openReservations = True   # Define o status da reserva pra cancelado
+    
+    if not openReservations:
+        raise ThereAreNoOpenReservations("Não há reservas em aberto.")     # Se não houver, haverá um erro
 
     # Reescreve o banco de dados das reservas atualizado
     fieldnames = ['room_number', 'guest_cpf', 'checkin_date', 'checkout_date', 'total_value', 'status']
