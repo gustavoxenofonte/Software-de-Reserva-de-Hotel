@@ -31,6 +31,7 @@ def menu_principal():
         while True:
             opcao = input("Escolha uma opção: ")
 
+            # Valida se é número inteiro entre 1 e 10 antes de aceitar a opção
             if opcao.isdigit():
                 opcao = float(opcao)
                 if opcao % 1 == 0 and ( opcao > 0 and opcao < 11 ) :
@@ -66,6 +67,7 @@ def menu_principal():
             pass
 
         elif opcao == 10:
+            # Exige login novamente antes de liberar acesso à área de configuração
             print("Por questões de segurança, insira o login novamente")
             if login_adm():
                 print("== Configuração Login Administrativo ==")
@@ -89,8 +91,7 @@ def menu_principal():
                 else:
                     pass
 
-
-
+        # Pergunta se o usuário quer voltar ao menu ou encerrar o programa
         while True:    
             continuar = input("Deseja continuar? (S/N): ")
             if continuar.isalpha():
@@ -101,6 +102,7 @@ def menu_principal():
 
         if continuar.upper() == "N":
             raise SystemExit
-    
+
+# Exige login antes de liberar acesso ao menu principal
 if login_adm():
     menu_principal()

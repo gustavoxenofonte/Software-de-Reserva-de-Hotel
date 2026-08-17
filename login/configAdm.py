@@ -8,6 +8,8 @@ def menuAlterarUsername():
             alterarUserName(novo_usuario)
             print(f"Nome de usuário trocado para: {novo_usuario}")
             return novo_usuario
+
+        # Cada exception cobre uma regra de validação diferente do novo username
         except UserNameNotStr:
             print("Nome de usuário inválido, tente novamente")
         except UserNameHaveComma:
@@ -24,6 +26,8 @@ def menuAlterarSenha():
             alterarSenha(nova_senha)
             print(f"Senha trocada para: {nova_senha}")
             return nova_senha
+
+        # Cada exception cobre uma regra de validação diferente da nova senha
         except PasswordNotStr:
             print("Senha inválida, tente novamente")
         except PasswordHaveComma:
