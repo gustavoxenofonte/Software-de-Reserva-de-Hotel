@@ -1,6 +1,5 @@
 from database.adminDatabase.adminExiste import *
 from database.adminDatabase.cadastrarLoginAdministrativo import *
-from sys import exit
 
 def login_adm():
     while True:
@@ -33,4 +32,4 @@ def login_adm():
                     cadastrarLoginAdministrativo(usuario, senha)
                     break
                 elif opcao.upper() == "N":
-                    exit()
+                    raise SystemExit
