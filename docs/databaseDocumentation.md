@@ -68,9 +68,9 @@ sys.path.insert(0, caminho_absoluto)
 - `excluirHospede(guest_cpf: str) -> None`
     - Utilizado para excluir o cadastro de um hóspede do banco de dados
     - `guest_cpf` deve ser no padrão: `00011122233` sem caracteres especiais
-- `hospedeExiste(guest_cpf: str) -> bool` 
-    - Retorna se o hospede com o cpf `guest_cpf` existe
-    - `True` = existe; `False` = não existe
+- `hospedeExiste(guest_cpf: str) -> dict` 
+    - Retorna o hospede com o cpf guest_cpf
+    - Se não existe, dispara um erro
 
 <br>
 
