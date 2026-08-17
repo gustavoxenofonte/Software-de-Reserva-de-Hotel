@@ -18,7 +18,7 @@ def alterarSenha(new_password: str) -> None:
         raise PasswordNotStr("Password deve ser uma str")
     if new_password.find(',') != -1:
         raise PasswordHaveComma("Password não pode ter vírgula")
-    if new_password.find(',') != -1:
+    if new_password.find(' ') != -1:
         raise PasswordHaveSpace("Password não pode ter espaço")
     if len(new_password) == 0 :
         raise NullPassword("Password não pode ser vazio")

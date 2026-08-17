@@ -84,7 +84,9 @@ def menu_principal():
                         print("Opção inválida, tente novamente")
 
                 if opcao_adm == 1:
-                    alterarUserName(menuAlterarUsername())
+                    menuAlterarUsername()
+                if opcao_adm == 2:
+                    menuAlterarSenha()
 
 
 
