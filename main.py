@@ -7,6 +7,9 @@
 # OBS 2: Vou integrando as funções no ifs da função menu_principal() conforme elas forem sendo feitas
 
 from login.loginAdm import *
+from reserva.cadastroReservas import *
+from reserva.exibirReservas import *
+from check_out import *
 from sys import exit
 
 def menu_principal():
@@ -46,13 +49,13 @@ def menu_principal():
             pass
 
         elif opcao == 5:
-            pass
+            cadastroReserva()
 
         elif opcao == 6:
-            pass
+            check_out()
 
         elif opcao == 7:
-            pass
+            exibirReservas()
 
         elif opcao == 8:
             pass
