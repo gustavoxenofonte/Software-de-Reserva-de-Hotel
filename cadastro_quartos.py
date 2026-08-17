@@ -1,3 +1,5 @@
+import database.roomsDatabase
+
 def cadastro_quartos():      #FUNÇÃO PARA CADASTRO DE QUARTOS
 
     vermelho = "\033[91m"   #COR PARA MENSAGENS DE ERRO
@@ -73,9 +75,10 @@ def cadastro_quartos():      #FUNÇÃO PARA CADASTRO DE QUARTOS
         
         else:
             print(f"{vermelho}ERRO! OPÇÃO INVÁLIDA!{reset}")
+
+        database.roomsDatabase.cadastrarQuarto(numero,andar,acomodacao,categoria)
             
 #ATRIBUE A FUNÇÃO "cadastro_quartos()" À VARIÁVEL "CADASTRO"
-cadastro = cadastro_quartos()
 
 #IMPRIME A FUNÇÃO
-print (cadastro)
+cadastro_quartos()

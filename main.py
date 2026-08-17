@@ -6,11 +6,8 @@
 # OBS 1: As funções login() e configuracao_login() irei fazer quando o banco de dados estiver funcionando  
 # OBS 2: Vou integrando as funções no ifs da função menu_principal() conforme elas forem sendo feitas
 
-def login(): 
-    pass
-
-def configuracao_login():
-    pass
+from login.loginAdm import *
+from sys import exit
 
 def menu_principal():
 
@@ -72,15 +69,7 @@ def menu_principal():
                     break
 
         if continuar.upper() == "N":
-            break
+            exit()
     
-
-
-
-
-
-
-
-
-
-
+if login_adm():
+    menu_principal()
