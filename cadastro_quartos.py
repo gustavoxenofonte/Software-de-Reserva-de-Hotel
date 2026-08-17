@@ -13,20 +13,13 @@ def cadastro_quartos():      #FUNÇÃO PARA CADASTRO DE QUARTOS
             while numero <= 0 or numero > 100:
                 print(f"{vermelho}ERRO! NÚMERO DE QUARTO INVÁLIDO!{reset}")
                 numero = int(input("Digite o número correspondente ao quarto: "))
-            break  
+            if database.roomsDatabase.quartoExiste(numero):
+                print(f"{vermelho}ERRO! QUARTO JÁ EXISTENTE!")
+            else:
+                break
         except ValueError:
             print(f"{vermelho}ERRO! NÚMERO DE QUARTO INVÁLIDO!{reset}")
-
-    #TRATAMENTO DE POSSÍVEL ERRO DE USUÁRIO - NÚMERO DE ANDAR CORRESPONDENTE AO QUARTO SENDO MENOR QUE ZERO (ZERO = ANDAR TÉRREO)
-    while True:
-        try:          #Testa se o número digitado é menor que zero. Se o valor retornado for "True", imprime uma mensagem de erro e repete a pergunta
-            andar = int(input("Digite em qual andar do hotel o quarto está localizado: "))
-            while andar < 0 or andar > 5:
-                print(f"{vermelho}ERRO! ANDAR NÃO RECONHECIDO!{reset}")
-                andar = int(input("Digite em qual andar do hotel o quarto está localizado: "))
-            break
-        except ValueError:
-            print(f"{vermelho}ERRO! ANDAR NÃO RECONHECIDO!{reset}")
+        
 
     #TRATAMENTO DE POSSÍVEL ERRO DE USUÁRIO - NÚMERO DE PESSOAS ACOMODADAS NO QUARTO SENDO MENOR QUE UM (POIS 0 SIGNIFICARIA QUE O QUARTO NÃO ACOMODA NINGUÉM)
     while True:
@@ -38,6 +31,16 @@ def cadastro_quartos():      #FUNÇÃO PARA CADASTRO DE QUARTOS
             break
         except ValueError:
             print(f"{vermelho}ERRO! OPÇÃO INVÁLIDA!{reset}")
+
+    while True:
+            try:          #Testa se o número digitado é menor ou igual a zero. Se o valor retornado for "True", imprime uma mensagem de erro e repete a pergunta
+                valor = float(input("Digite o valor da diária do quarto: "))
+                while valor <= 0 or valor > 1000:
+                    print(f"{vermelho}ERRO! VALOR NÃO RECONHECIDO!{reset}")
+                    valor = int(input("Digite o valor da diária do quarto: "))
+                break
+            except ValueError:
+                print(f"{vermelho}ERRO! VALOR NÃO RECONHECIDO!{reset}")
 
     #TRATAMENTO DE POSSÍVEL ERRO DE USUÁRIO - CATEGORIA DO QUARTO SENDO DIFERENTE DE "SIMPLES, INTERMEDIÁRIO E LUXO"
     while True:
@@ -59,15 +62,10 @@ def cadastro_quartos():      #FUNÇÃO PARA CADASTRO DE QUARTOS
         except ValueError:
             print(f"{vermelho}ERRO! OPÇÃO INVÁLIDA!{reset}")
             continue
-
+    
         if x == 1:
             print(f"{verde}QUARTO CADASTRADO COM SUCESSO!{reset}")
-            return {
-                "Número": numero,
-                "Andar": andar,
-                "Acomodação": acomodacao,
-                "Categoria": categoria
-            }
+            break
         
         elif x == 2:
             print(f"{vermelho}Faça seu cadastro novamente com as informações corretas{reset}")
@@ -76,9 +74,4 @@ def cadastro_quartos():      #FUNÇÃO PARA CADASTRO DE QUARTOS
         else:
             print(f"{vermelho}ERRO! OPÇÃO INVÁLIDA!{reset}")
 
-        database.roomsDatabase.cadastrarQuarto(numero,andar,acomodacao,categoria)
-            
-#ATRIBUE A FUNÇÃO "cadastro_quartos()" À VARIÁVEL "CADASTRO"
-
-#IMPRIME A FUNÇÃO
-cadastro_quartos()
+    database.roomsDatabase.cadastrarQuarto(numero,categoria,acomodacao,valor,True)
