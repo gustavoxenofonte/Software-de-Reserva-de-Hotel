@@ -20,7 +20,7 @@ def login_adm():
 
                 if tentativas == 1:
                     print("Você excedeu o número de tentativas")
-                    exit()
+                    raise SystemExit
 
         except AdminLoginDontExists:
             while True:
