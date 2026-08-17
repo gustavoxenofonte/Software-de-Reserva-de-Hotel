@@ -11,3 +11,4 @@ def adminExiste() -> list:
         return admin                        # Se conseguir, retorna a lista
     except:
         raise AdminLoginDontExists("O login administrativo não existe")      # Se der erro, retorna o erro de login inexistente
+
