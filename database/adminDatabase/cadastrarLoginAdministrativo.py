@@ -40,7 +40,7 @@ def cadastrarLoginAdministrativo(user_name: str, password: str) -> None:
         raise PasswordNotStr("Password deve ser uma str")
     if password.find(',') != -1:
         raise PasswordHaveComma("Password não pode ter vírgula")
-    if password.find(',') != -1:
+    if password.find(' ') != -1:
         raise PasswordHaveSpace("Password não pode ter espaço")
     if len(password) == 0 :
         raise NullPassword("Password não pode ser vazio")
