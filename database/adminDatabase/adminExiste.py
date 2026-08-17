@@ -3,7 +3,7 @@ from csv import reader
 class AdminLoginDontExists(Exception):
     pass
 
-def adminExiste() -> bool:
+def adminExiste() -> list:
     try:
         with open("./database/adminDatabase/adminDatabase.csv", "r", encoding='utf-8') as database:
             read = list(reader(database))

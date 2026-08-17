@@ -88,5 +88,7 @@ sys.path.insert(0, caminho_absoluto)
 - `alterarSenha(new_password: str) -> None`
     - Irá mudar a senha
     - `new_password` deverá ser somente caracteres sem espaços e não pode conter vírgula ( , )
-- `adminExiste() -> bool`
+- `adminExiste() -> list`
     - Verifica se existe login administrativo
+    - Retorna uma lista com o login e senha se existir
+    - Se não existir dispara um erro
