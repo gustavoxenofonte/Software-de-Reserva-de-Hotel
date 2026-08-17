@@ -1,10 +1,13 @@
 from csv import reader
 
-def adminExiste() -> bool:
+class AdminLoginDontExists(Exception):
+    pass
+
+def adminExiste() -> list:
     try:
         with open("./database/adminDatabase/adminDatabase.csv", "r", encoding='utf-8') as database:
             read = list(reader(database))
             admin = read[1]                # Tenta adcionar o login administrativo a uma variável
-        return True                        # Se conseguir, retorna True
+        return admin                        # Se conseguir, retorna a lista
     except:
-        return False       # Se der erro, retorna false
+        raise AdminLoginDontExists("O login administrativo não existe")      # Se der erro, retorna o erro de login inexistente
