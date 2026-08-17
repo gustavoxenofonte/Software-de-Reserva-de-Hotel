@@ -221,6 +221,7 @@ __marimo__/
 /database/roomsDatabase/roomsDatabase.csv
 /database/reservationDatabase/reservationDatabase.csv
 /database/adminDatabase/adminDatabase.csv
+/database/guestDatabase/guestDatabase.csv
 
 # Arquivo de testes
 testes.py
