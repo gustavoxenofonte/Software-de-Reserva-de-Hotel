@@ -5,6 +5,7 @@ caminho_absoluto = os.path.abspath(os.curdir)
 sys.path.insert(0, caminho_absoluto)
 import database.roomsDatabase
 import database.reservationDatabase
+import database.guestDatabase
 
 def cadastroReserva():
         print("="*50)
@@ -27,38 +28,41 @@ def cadastroReserva():
             print("Erro. CPF já existe no branco de dados de reservas.")
             return print("Fim do programa")
 
-        ## criar condição para testar se o hóspede já existe no banco de dados, se sim, não executar os inputs dos dados abaixo
+        try:
+            dados = database.guestDatabase.hospedeExiste(cpfHospede)          #checa se o hóspede já está cadastrado
+            print("Usuário já cadastrado")
+        except:
+            nomeHospede = str(input("Insira o nome do hóspede que deseja fazer a reserva: ")).strip().title()
+            if nomeHospede == '0':
+                return print("Fim do programa")
 
-        nomeHospede = str(input("Insira o nome do hóspede que deseja fazer a reserva: ")).strip().title()
-        if nomeHospede == '0':
-            return print("Fim do programa")
-
-        telefoneHospede = str(input("Insira o telefone do hóspede: ")).strip()
-        telefoneHospede = "".join(x for x in telefoneHospede if x.isnumeric()) ##realiza o mesmo que na variável cpf
-        if telefoneHospede == '0':
-            return print("Fim do programa")
-        while len(telefoneHospede) != 11:
-            print("Telefone inválido")
             telefoneHospede = str(input("Insira o telefone do hóspede: ")).strip()
-            telefoneHospede = "".join(x for x in telefoneHospede if x.isnumeric())
+            telefoneHospede = "".join(x for x in telefoneHospede if x.isnumeric()) ##realiza o mesmo que na variável cpf
             if telefoneHospede == '0':
-               return print("Fim do programa")
-        
-        while True:
-            try:
-                idadeHospede = int(input("Insira a idade do hóspede: "))
-                if idadeHospede == 0:
+                return print("Fim do programa")
+            while len(telefoneHospede) != 11:
+                print("Telefone inválido")
+                telefoneHospede = str(input("Insira o telefone do hóspede: ")).strip()
+                telefoneHospede = "".join(x for x in telefoneHospede if x.isnumeric())
+                if telefoneHospede == '0':
                     return print("Fim do programa")
-                while idadeHospede < 0:
-                    print("Idade inválida")
+            
+            while True:
+                try:
                     idadeHospede = int(input("Insira a idade do hóspede: "))
                     if idadeHospede == 0:
                         return print("Fim do programa")
-                break
-            except ValueError:
-                print("Valor inválido")
+                    while idadeHospede < 18:
+                        print("Idade inválida ou Hóspede menor de idade")
+                        idadeHospede = int(input("Insira a idade do hóspede: "))
+                        if idadeHospede == 0:
+                            return print("Fim do programa")
+                    break
+                except ValueError:
+                    print("Valor inválido")
 
-        #database.roomsDatabase.cadastrarHospede(cpfHospede, nomeHospede, telefoneHospede, idade)
+            database.roomsDatabase.cadastrarHospede(cpfHospede, nomeHospede, telefoneHospede, idadeHospede)
+            print("Usuário cadastrado")
         
         while True:
             try:         
