@@ -71,6 +71,8 @@ sys.path.insert(0, caminho_absoluto)
 - `hospedeExiste(guest_cpf: str) -> dict` 
     - Retorna o hospede com o cpf guest_cpf
     - Se não existe, dispara um erro
+- `listarHospedes() -> list`
+    - Retorna uma lista de dicionários correspondente ao banco de dados dos hóspedes
 
 <br>
 
