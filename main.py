@@ -6,44 +6,55 @@
 # OBS 1: As funções login() e configuracao_login() irei fazer quando o banco de dados estiver funcionando  
 # OBS 2: Vou integrando as funções no ifs da função menu_principal() conforme elas forem sendo feitas
 
-def login(): 
-    pass
-
-def configuracao_login():
-    pass
+from login.loginAdm import *
+from login.configAdm import *
+from login.menuConfigAdm import *
+from reserva.cadastroReservas import *
+from reserva.exibirReservas import *
+from check_out import *
+from excluir_quartos import *
+from exibir_quartos import *
+from cadastro_quartos import *
 
 def menu_principal():
 
     while True:
         print("== HOTEL - MENU PRINCIPAL ==")
+        print("0. Sair")
         print("1. Cadastrar quartos")
-        print("2. Listar quartos")
-        print("3. Cadastrar hóspedes (check-in)")
-        print("4. Listar hóspedes")
-        print("5. Reservar quartos")
-        print("6. Check-out")
-        print("7. Consultar reservas")
-        print("8. Relatório de faturamento")
-        print("9. Histórico de hospedagens")
+        print("2. Excluir quartos")
+        print("3. Listar quartos")
+        print("4. Cadastrar hóspedes (check-in)")
+        print("5. Listar hóspedes")
+        print("6. Reservar quartos")
+        print("7. Check-out")
+        print("8. Consultar reservas")
+        print("9. Relatório de faturamento")
+        print("10. Histórico de hospedagens")
+        print("11. Configuração de login administrativo")
 
         while True:
             opcao = input("Escolha uma opção: ")
 
+            # Valida se é número inteiro entre 1 e 10 antes de aceitar a opção
             if opcao.isdigit():
                 opcao = float(opcao)
-                if opcao % 1 == 0 and ( opcao > 0 and opcao < 10 ) :
+                if opcao % 1 == 0 and ( opcao >= 0 and opcao <= 11 ) :
                     break
 
             print("Opção inválida, tente novamente!")
 
-        if opcao == 1:
-            pass
+        if opcao == 0:
+            raise SystemExit
+
+        elif opcao == 1:
+            cadastro_quartos()
 
         elif opcao == 2:
-            pass
+            excluir_quartos()
 
         elif opcao == 3:
-            pass
+            exibir_quartos()
 
         elif opcao == 4:
             pass
@@ -52,17 +63,24 @@ def menu_principal():
             pass
 
         elif opcao == 6:
-            pass
+            cadastroReserva()
 
         elif opcao == 7:
-            pass
+            check_out()
 
         elif opcao == 8:
-            pass
+            exibirReservas()
 
         elif opcao == 9:
             pass
 
+        elif opcao == 10:
+            pass
+
+        elif opcao == 11:
+            menuConfigAdm()
+
+        # Pergunta se o usuário quer voltar ao menu ou encerrar o programa
         while True:    
             continuar = input("Deseja continuar? (S/N): ")
             if continuar.isalpha():
@@ -70,17 +88,10 @@ def menu_principal():
                     print("Opção inválida, tente novamente!")
                 else:
                     break
-
-        if continuar.upper() == "N":
-            break
     
+        if continuar.upper() == "N":
+            raise SystemExit
 
-
-
-
-
-
-
-
-
-
+# Exige login antes de liberar acesso ao menu principal
+if login_adm():
+    menu_principal()
