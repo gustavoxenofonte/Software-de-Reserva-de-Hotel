@@ -6,9 +6,11 @@ def cadastro_quartos():      #FUNÇÃO PARA CADASTRO DE QUARTOS
     verde = "\033[92m"      #COR PARA MENSAGENS DE SUCESSO
     reset = "\033[0m"       #VOLTA PARA A COR NORMAL
 
+    print("\n--- CADASTRAR NOVO QUARTO ---")
+
     #TRATAMENTO DE POSSÍVEL ERRO DE USUÁRIO - NÚMERO DE QUARTO SENDO MENOR OU IGUAL A ZERO
     while True:
-        try:          #Testa se o número digitado é menor ou igual a zero. Se o valor retornado for "True", imprime uma mensagem de erro e repete a pergunta
+        try:          #Testa se o número digitado é menor ou igual a zero. Se o valor retornado for "True", imprime uma mensagem de erro e repete a pergunta.
             numero = int(input("Digite o número correspondente ao quarto: "))
             while numero <= 0 or numero > 100:
                 print(f"{vermelho}ERRO! NÚMERO DE QUARTO INVÁLIDO!{reset}")
@@ -23,7 +25,7 @@ def cadastro_quartos():      #FUNÇÃO PARA CADASTRO DE QUARTOS
 
     #TRATAMENTO DE POSSÍVEL ERRO DE USUÁRIO - NÚMERO DE PESSOAS ACOMODADAS NO QUARTO SENDO MENOR QUE UM (POIS 0 SIGNIFICARIA QUE O QUARTO NÃO ACOMODA NINGUÉM)
     while True:
-        try:          #Testa se o número digitado é menor que um. Se o valor retornado for "True", imprime uma mensagem de erro e repete a pergunta
+        try:          #Testa se o número digitado é menor que um. Se o valor retornado for "True", imprime uma mensagem de erro e repete a pergunta.
             acomodacao = int(input("Quantas pessoas esse quarto acomoda? "))
             while acomodacao < 1 or acomodacao > 4:
                 print(f"{vermelho}ERRO! OPÇÃO INVÁLIDA!{reset}")
@@ -33,7 +35,7 @@ def cadastro_quartos():      #FUNÇÃO PARA CADASTRO DE QUARTOS
             print(f"{vermelho}ERRO! OPÇÃO INVÁLIDA!{reset}")
 
     while True:
-            try:          #Testa se o número digitado é menor ou igual a zero. Se o valor retornado for "True", imprime uma mensagem de erro e repete a pergunta
+            try:          #Testa se o número digitado é menor ou igual a zero. Se o valor retornado for "True", imprime uma mensagem de erro e repete a pergunta.
                 valor = float(input("Digite o valor da diária do quarto: "))
                 while valor <= 0 or valor > 1000:
                     print(f"{vermelho}ERRO! VALOR NÃO RECONHECIDO!{reset}")
@@ -53,7 +55,7 @@ def cadastro_quartos():      #FUNÇÃO PARA CADASTRO DE QUARTOS
         except ValueError:
             print(f"{vermelho}ERRO! OPÇÃO INVÁLIDA!{reset}")
 
-    while True:
+    while True:          #Confirma informações para cadastro, evitando cadastro acidental.
         print("Confirma as Informações para Cadastro?")
         print("1.SIM")
         print("2.NÃO")

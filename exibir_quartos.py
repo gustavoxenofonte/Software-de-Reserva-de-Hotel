@@ -1,7 +1,7 @@
 import database.roomsDatabase
 
 def exibir_quartos():
-    print("Exibindo quartos...")
+    print("\n Exibindo quartos...")
     quartos = database.roomsDatabase.listarQuartos()
     print("="*66)
     print("|NO.  |TIPO          |CAPACIDADE  |VALOR       |STATUS    |")
