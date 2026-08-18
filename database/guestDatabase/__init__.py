@@ -10,5 +10,6 @@ arquivo.close()
 from .cadastrarHospede import *
 from .excluirHospede import *
 from .hospedeExiste import *
+from .listarHospedes import *
 
-__all__ = ['cadastrarHospede', 'excluirHospede', 'hospedeExiste']
+__all__ = ['cadastrarHospede', 'excluirHospede', 'hospedeExiste', 'listarHospedes']
