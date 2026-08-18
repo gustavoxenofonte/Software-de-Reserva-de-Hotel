@@ -13,5 +13,3 @@ def exibirReservas():
     for i in reservas:
         print(f"|{i['room_number']:<4} |{i['guest_cpf']:<13} |{i['checkin_date']:<11} |{i['checkout_date']:<11} |{i['total_value']:<4} |{i['status']:<10}|")
     print("="*66)
-
-exibirReservas()

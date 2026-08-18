@@ -18,6 +18,6 @@ def check_out():
             
     
     ## criar condição para testar se o hóspede já existe no banco de dados, se sim, fazer o check-out, se não, exibir o erro "Hóspede não encontrado"
-    valor = database.reservationDatabase.checkOut(cpfHospede)
+    valor = float(database.reservationDatabase.checkOut(cpfHospede))
     print("Check-out realizado")
     print(f"Valor total da estadia: R${valor:.2f}")
