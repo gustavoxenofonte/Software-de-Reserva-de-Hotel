@@ -8,25 +8,30 @@
 
 from login.loginAdm import *
 from login.configAdm import *
+from login.menuConfigAdm import *
 from reserva.cadastroReservas import *
 from reserva.exibirReservas import *
 from check_out import *
-
+from excluir_quartos import *
+from exibir_quartos import *
+from cadastro_quartos import *
 
 def menu_principal():
 
     while True:
         print("== HOTEL - MENU PRINCIPAL ==")
+        print("0. Sair")
         print("1. Cadastrar quartos")
-        print("2. Listar quartos")
-        print("3. Cadastrar hóspedes (check-in)")
-        print("4. Listar hóspedes")
-        print("5. Reservar quartos")
-        print("6. Check-out")
-        print("7. Consultar reservas")
-        print("8. Relatório de faturamento")
-        print("9. Histórico de hospedagens")
-        print("10. Configuração de login administrativo")
+        print("2. Excluir quartos")
+        print("3. Listar quartos")
+        print("4. Cadastrar hóspedes (check-in)")
+        print("5. Listar hóspedes")
+        print("6. Reservar quartos")
+        print("7. Check-out")
+        print("8. Consultar reservas")
+        print("9. Relatório de faturamento")
+        print("10. Histórico de hospedagens")
+        print("11. Configuração de login administrativo")
 
         while True:
             opcao = input("Escolha uma opção: ")
@@ -34,62 +39,46 @@ def menu_principal():
             # Valida se é número inteiro entre 1 e 10 antes de aceitar a opção
             if opcao.isdigit():
                 opcao = float(opcao)
-                if opcao % 1 == 0 and ( opcao > 0 and opcao < 11 ) :
+                if opcao % 1 == 0 and ( opcao >= 0 and opcao <= 11 ) :
                     break
 
             print("Opção inválida, tente novamente!")
 
-        if opcao == 1:
-            pass
+        if opcao == 0:
+            raise SystemExit
+
+        elif opcao == 1:
+            cadastro_quartos()
 
         elif opcao == 2:
-            pass
+            excluir_quartos()
 
         elif opcao == 3:
-            pass
+            exibir_quartos()
 
         elif opcao == 4:
             pass
 
         elif opcao == 5:
-            cadastroReserva()
+            pass
 
         elif opcao == 6:
-            check_out()
+            cadastroReserva()
 
         elif opcao == 7:
-            exibirReservas()
+            check_out()
 
         elif opcao == 8:
-            pass
+            exibirReservas()
 
         elif opcao == 9:
             pass
 
         elif opcao == 10:
-            # Exige login novamente antes de liberar acesso à área de configuração
-            print("Por questões de segurança, insira o login novamente")
-            if login_adm():
-                print("== Configuração Login Administrativo ==")
-                print("0. Sair")
-                print("1. Alterar login")
+            pass
 
-                while True:
-                    opcao_adm = input("Escolha uma opção: ")
-
-                    if opcao_adm.isdigit():
-                        opcao_adm = float(opcao_adm)
-                        if opcao_adm % 1 == 0 and opcao_adm == 1 or opcao_adm == 0:
-                            break
-                        
-                    else:
-                        print("Opção inválida, tente novamente")
-
-                if opcao_adm == 1:
-                    menuAlterarUsername()
-                    menuAlterarSenha()
-                else:
-                    pass
+        elif opcao == 11:
+            menuConfigAdm()
 
         # Pergunta se o usuário quer voltar ao menu ou encerrar o programa
         while True:    
@@ -99,7 +88,7 @@ def menu_principal():
                     print("Opção inválida, tente novamente!")
                 else:
                     break
-
+    
         if continuar.upper() == "N":
             raise SystemExit
 
