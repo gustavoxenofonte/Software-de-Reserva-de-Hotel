@@ -7,10 +7,11 @@
 # OBS 2: Vou integrando as funções no ifs da função menu_principal() conforme elas forem sendo feitas
 
 from login.loginAdm import *
+from login.configAdm import *
 from reserva.cadastroReservas import *
 from reserva.exibirReservas import *
 from check_out import *
-from sys import exit
+
 
 def menu_principal():
 
@@ -25,13 +26,15 @@ def menu_principal():
         print("7. Consultar reservas")
         print("8. Relatório de faturamento")
         print("9. Histórico de hospedagens")
+        print("10. Configuração de login administrativo")
 
         while True:
             opcao = input("Escolha uma opção: ")
 
+            # Valida se é número inteiro entre 1 e 10 antes de aceitar a opção
             if opcao.isdigit():
                 opcao = float(opcao)
-                if opcao % 1 == 0 and ( opcao > 0 and opcao < 10 ) :
+                if opcao % 1 == 0 and ( opcao > 0 and opcao < 11 ) :
                     break
 
             print("Opção inválida, tente novamente!")
@@ -63,6 +66,32 @@ def menu_principal():
         elif opcao == 9:
             pass
 
+        elif opcao == 10:
+            # Exige login novamente antes de liberar acesso à área de configuração
+            print("Por questões de segurança, insira o login novamente")
+            if login_adm():
+                print("== Configuração Login Administrativo ==")
+                print("0. Sair")
+                print("1. Alterar login")
+
+                while True:
+                    opcao_adm = input("Escolha uma opção: ")
+
+                    if opcao_adm.isdigit():
+                        opcao_adm = float(opcao_adm)
+                        if opcao_adm % 1 == 0 and opcao_adm == 1 or opcao_adm == 0:
+                            break
+                        
+                    else:
+                        print("Opção inválida, tente novamente")
+
+                if opcao_adm == 1:
+                    menuAlterarUsername()
+                    menuAlterarSenha()
+                else:
+                    pass
+
+        # Pergunta se o usuário quer voltar ao menu ou encerrar o programa
         while True:    
             continuar = input("Deseja continuar? (S/N): ")
             if continuar.isalpha():
@@ -72,7 +101,8 @@ def menu_principal():
                     break
 
         if continuar.upper() == "N":
-            exit()
-    
+            raise SystemExit
+
+# Exige login antes de liberar acesso ao menu principal
 if login_adm():
     menu_principal()
