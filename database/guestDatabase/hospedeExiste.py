@@ -9,7 +9,7 @@ class CPFAreNotCorrect(Exception):
 class GuestDontExists(Exception):
     pass
 
-def reservaExiste(guest_cpf: str) -> bool:
+def hospedeExiste(guest_cpf: str) -> bool:
     if not guest_cpf.isdecimal():    # Verifica se o cpf são somente números
         raise CPFAreNotNumbers("O cpf contém outros caracteres que não são números")
 
