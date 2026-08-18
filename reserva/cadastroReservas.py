@@ -129,15 +129,11 @@ def cadastroReserva():
         diasHospedados = dataCheckout - dataCheckin
         valorTotal = (1 + diasHospedados.days) * valorquartoAtual  ##pega a variável diasHospedados em um número inteiro
 
-        if dataCheckin == datetime.date.today() and quartoAtualReservado == True:        #confere se o quarto atual pode receber o check-in
-            database.reservationDatabase.cadastrarReserva(numeroQuarto, cpfHospede, dataCheckin, dataCheckout, valorTotal, 'hospedado')
-            database.reservationDatabase.alterarStatusQuarto(numeroQuarto, False)
-            print("Reserva Feita")
-            print("Check-in automático realizado")
-        elif dataCheckin == datetime.date.today() and quartoAtualReservado == False:      #caso o quarto já esteja hospedado, exibe o erro
+        if dataCheckin == datetime.date.today() and quartoAtualReservado == False:      #caso o quarto já esteja hospedado, exibe o erro
             print("Erro na reserva, quarto reservado para o dia atual, reservar para o dia seguinte")
-        elif dataCheckin != datetime.date.today():
+        else: 
             database.reservationDatabase.cadastrarReserva(numeroQuarto, cpfHospede, dataCheckin, dataCheckout, valorTotal, 'reservado')
             print("Reserva Feita")
-
-cadastroReserva()
+            if dataCheckin == datetime.date.today() and quartoAtualReservado == True:        #confere se o quarto atual pode receber o check-in
+                database.reservationDatabase.checkIn(cpfHospede)
+                print("Check-in automático realizado")
