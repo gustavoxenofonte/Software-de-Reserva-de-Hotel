@@ -4,9 +4,10 @@
 <br>
 
 <center>
-<img alt="GitHub contributors" src="https://img.shields.io/github/contributors/gustavoxenofonte/Software-de-Reserva-de-Hotel?style=for-the-badge">
-<img alt="GitHub top language" src="https://img.shields.io/github/languages/top/gustavoxenofonte/Software-de-Reserva-de-Hotel?style=for-the-badge">
-<img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/t/gustavoxenofonte/Software-de-Reserva-de-Hotel?style=for-the-badge">
+<a href="https://github.com/gustavoxenofonte/Software-de-Reserva-de-Hotel/graphs/contributors?from=16%2F05%2F2026"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/gustavoxenofonte/Software-de-Reserva-de-Hotel?style=for-the-badge"></a>
+<a href="https://www.python.org/downloads/"><img alt="GitHub top language" src="https://img.shields.io/github/languages/top/gustavoxenofonte/Software-de-Reserva-de-Hotel?style=for-the-badge"></a>
+<a href="https://github.com/gustavoxenofonte/Software-de-Reserva-de-Hotel/commits/main/"><img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/t/gustavoxenofonte/Software-de-Reserva-de-Hotel?style=for-the-badge"></a>
+<a href="https://githubtree.mgks.dev/repo/gustavoxenofonte/Software-de-Reserva-de-Hotel/main/"><img src="https://img.shields.io/badge/Structure-GitHubTree-blue?style=for-the-badge" alt="GitHubTree Structure"></a>
 </center>
 
 <br>
@@ -16,6 +17,7 @@
 - [Problema que o projeto busca resolver](#problema-que-o-projeto-busca-resolver)
 - [Instruções de Execução](#instruções-de-execução)
 - [Exemplos de uso](#exemplos-de-uso)
+- [Arquitetura de arquivos](#arquitetura-de-arquivos)
 - [Divisão de tarefas](#divisão-de-tarefas)
 
 <br>
@@ -119,6 +121,63 @@ Senha: 123456
 Escolha uma opção:
 ```
 - No menu o usuário pode escolher uma das opções e utilizar o software da maneira que mais preferir
+
+<br>
+
+## Arquitetura de arquivos
+```
+├── database/
+│   ├── adminDatabase/
+│   │   ├── __init__.py
+│   │   ├── adminExiste.py
+│   │   ├── alterarSenha.py
+│   │   ├── alterarUserName.py
+│   │   └── cadastrarLoginAdministrativo.py
+│   ├── guestDatabase/
+│   │   ├── __init__.py
+│   │   ├── cadastrarHospede.py
+│   │   ├── excluirHospede.py
+│   │   ├── hospedeExiste.py
+│   │   └── listarHospedes.py
+│   ├── reservationDatabase/
+│   │   ├── __init__.py
+│   │   ├── cadastrarReserva.py
+│   │   ├── cancelarReserva.py
+│   │   ├── checkIn.py
+│   │   ├── checkOut.py
+│   │   ├── listarReservas.py
+│   │   └── reservaExiste.py
+│   └── roomsDatabase/
+│       ├── __init__.py
+│       ├── alterarStatusQuarto.py
+│       ├── cadastrarQuarto.py
+│       ├── excluirQuarto.py
+│       ├── listarQuartos.py
+│       └── quartoExiste.py
+├── docs/
+│   ├── databaseDocumentation.md
+│   └── generalDocumentation.md
+├── login/
+│   ├── configAdm.py
+│   ├── loginAdm.py
+│   └── menuConfigAdm.py
+├── reserva/
+│   ├── cadastroReservas.py
+│   ├── excluirReservas.py
+│   └── exibirReservas.py
+├── .gitignore
+├── cadastro_quartos.py
+├── cadastro.py
+├── check_out.py
+├── close.py
+├── excluir_hospede.py
+├── excluir_quartos.py
+├── exibir_quartos.py
+├── lista_hospede.py
+├── main.py
+├── pesquisar_hospede.py
+└── README.md
+```
 
 <br>
 
