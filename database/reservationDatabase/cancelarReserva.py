@@ -1,6 +1,6 @@
 from csv import DictReader, DictWriter
 from .reservaExiste import reservaExiste
-# from ..guestsDatabase import excluirHospede     (liberar após a criação do banco de dados de hóspedes)
+from ..guestDatabase import excluirHospede
 
 class CPFAreNotNumbers(Exception):
     pass
@@ -48,4 +48,4 @@ def cancelarReserva(guest_cpf: str) -> None:
         writer.writerows(databaseList)
 
     # Remover o hóspede do banco de dados de hóspedes
-    # excluirHospede(guest_cpf)    (liberar após a criação do banco de dados de hóspedes)
+    excluirHospede(guest_cpf)
