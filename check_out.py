@@ -16,9 +16,11 @@ def check_out():
         cpfHospede = "".join(x for x in cpfHospede if x.isnumeric())
         if cpfHospede == '0':
             return ("Fim do menu")
-            
+
+    #confere se a reserva existe no bd        
     if database.reservationDatabase.reservaExiste(cpfHospede):
         try:
+            #confere se o hóspede está cadastrado no bd
             database.guestDatabase.hospedeExiste(cpfHospede)
             valor = float(database.reservationDatabase.checkOut(cpfHospede))
             print("Check-out realizado")
