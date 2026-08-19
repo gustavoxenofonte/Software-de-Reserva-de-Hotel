@@ -1,7 +1,7 @@
 from csv import DictReader, DictWriter
 from ..roomsDatabase import alterarStatusQuarto
 from .reservaExiste import reservaExiste
-# from ..guestsDatabase import excluirHospede     (liberar após a criação do banco de dados de hóspedes)
+from ..guestDatabase import excluirHospede
 
 class CPFAreNotNumbers(Exception):
     pass
@@ -55,6 +55,6 @@ def checkOut(guest_cpf: str) -> float:
     alterarStatusQuarto(int(room), True)
 
     # Remover o hóspede do banco de dados de hóspedes
-    # excluirHospede(guest_cpf)    (liberar após a criação do banco de dados de hóspedes)
+    excluirHospede(guest_cpf)
 
     return total_value    # Retorna o valor total da reserva
