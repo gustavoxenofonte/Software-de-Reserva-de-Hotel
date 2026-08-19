@@ -47,5 +47,3 @@ def excluirReservas():
             print("Reserva não encontrada ou já finalizada")
     except:
         print("Reserva não encontrada ou já finalizada")
-
-excluirReservas()

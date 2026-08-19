@@ -1,7 +1,7 @@
 from datetime import datetime
 from database.guestDatabase.cadastrarHospede import cadastrarHospede, GuestIsMinor, GuestAlreadyExists
 
-def cadastro_hospede()
+def cadastro_hospede():
     def nascimento():
         print('digite a data de nascimento do hóspede')
     
