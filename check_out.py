@@ -1,4 +1,5 @@
 import database.reservationDatabase
+import database.guestDatabase
 
 def check_out():
     print("="*50)
@@ -15,9 +16,16 @@ def check_out():
         cpfHospede = "".join(x for x in cpfHospede if x.isnumeric())
         if cpfHospede == '0':
             return ("Fim do menu")
-            
-    
-    ## criar condição para testar se o hóspede já existe no banco de dados, se sim, fazer o check-out, se não, exibir o erro "Hóspede não encontrado"
-    valor = float(database.reservationDatabase.checkOut(cpfHospede))
-    print("Check-out realizado")
-    print(f"Valor total da estadia: R${valor:.2f}")
+
+    #confere se a reserva existe no bd        
+    if database.reservationDatabase.reservaExiste(cpfHospede):
+        try:
+            #confere se o hóspede está cadastrado no bd
+            database.guestDatabase.hospedeExiste(cpfHospede)
+            valor = float(database.reservationDatabase.checkOut(cpfHospede))
+            print("Check-out realizado")
+            print(f"Valor total da estadia: R${valor:.2f}")
+        except:
+            print("Usuário não encontrado")
+    else:
+        print("Reserva não existe")
