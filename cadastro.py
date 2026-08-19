@@ -88,11 +88,11 @@ def cadastro_hospede():
     
     # Telefone
     while True:
-            telefone = input('Telefone (apenas números): ')
-            if telefone.isnumeric():
-                break
-            else:
-                print('digite apenar os números do telefone')
+        telefone = input('Telefone (apenas números): ')
+        if telefone.isnumeric():
+            break
+        else:
+            print('digite apenar os números do telefone')
 
     # Envio das informações coletadas para o banco de dados
     try:
