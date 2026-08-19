@@ -15,6 +15,7 @@ from cadastro import *
 from pesquisar_hospede import *
 from time import sleep
 from close import *
+from lista_hospede import *
 
 def menu_principal():
 
@@ -27,19 +28,19 @@ def menu_principal():
         print("4. Cadastrar hóspedes")
         print("5. Consultar hóspedes")
         print("6. Listar hóspedes")
-        print("6. Reservar quartos")
-        print("7. Check-out")
-        print("8. Consultar reservas")
-        print("9. Cancelar reserva")
-        print("10. Configuração de login administrativo")
+        print("7. Reservar quartos")
+        print("8. Check-out")
+        print("9. Consultar reservas")
+        print("10. Cancelar reserva")
+        print("11. Configuração de login administrativo")
 
         while True:
             opcao = input("Escolha uma opção: ")
 
-            # Valida se é número inteiro entre 1 e 10 antes de aceitar a opção
+            # Valida se é número inteiro entre 0 e 11 antes de aceitar a opção
             if opcao.isdigit():
                 opcao = float(opcao)
-                if opcao % 1 == 0 and ( opcao >= 0 and opcao <= 10 ) :
+                if opcao % 1 == 0 and ( opcao >= 0 and opcao <= 11 ) :
                     break
 
             print("Opção inválida, tente novamente!")
@@ -65,18 +66,21 @@ def menu_principal():
             consultar_hospede()
 
         elif opcao == 6:
-            cadastroReserva()
+            lista_hospede()
 
         elif opcao == 7:
-            check_out()
+            cadastroReserva()
 
         elif opcao == 8:
-            exibirReservas()
+            check_out()
 
         elif opcao == 9:
-            excluirReservas() 
+            exibirReservas()
 
         elif opcao == 10:
+            excluirReservas() 
+
+        elif opcao == 11:
             menuConfigAdm() 
 
         input("Pressione enter para continuar... ")
