@@ -3,11 +3,11 @@ from database.guestDatabase.cadastrarHospede import cadastrarHospede, GuestIsMin
 
 def cadastro_hospede():
     def nascimento():
-        print('digite a data de nascimento do hóspede')
+        print('Digite a data de nascimento do hóspede')
     
         while True:
             try:
-                dia = int(input('dia: '))
+                dia = int(input('Dia: '))
                 if 1 <= dia <= 31:
                     break
                 else:
@@ -17,21 +17,21 @@ def cadastro_hospede():
     
         while True:
             try:
-                mes = int(input('mês: '))
+                mes = int(input('Mês: '))
                 if 1 <= mes <= 12:
                     break
                 else:
-                    print('mês inválido. Digite o mês do nascimento do hóspede.')
+                    print('Mês inválido. Digite o mês do nascimento do hóspede.')
             except ValueError:
                 print('Entrada inválida. Por favor, digite apenas números.')
     
         while True:
             try:
-                ano = int(input('ano: '))
+                ano = int(input('Ano: '))
                 if 1900 <= ano <= 2026:
                     break
                 else:
-                    print('ano inválido. Digite o ano do nascimento do hóspede no formato AAAA.')
+                    print('Ano inválido. Digite o ano do nascimento do hóspede no formato AAAA.')
             except ValueError:
                 print('Entrada inválida. Por favor, digite apenas números.')
     
@@ -92,7 +92,7 @@ def cadastro_hospede():
         if telefone.isnumeric():
             break
         else:
-            print('digite apenar os números do telefone')
+            print('Digite apenas os números do telefone')
 
     # Envio das informações coletadas para o banco de dados
     try:
