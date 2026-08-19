@@ -87,8 +87,13 @@ def cadastro_hospede():
             print('CPF inválido')
     
     # Telefone
-    telefone = input('Telefone (apenas números): ')
-    
+    while True:
+        telefone = input('Telefone (apenas números): ')
+        if telefone.isnumeric():
+            break
+        else:
+            print('digite apenar os números do telefone')
+
     # Envio das informações coletadas para o banco de dados
     try:
         cadastrarHospede(guest_cpf=cpf, name=nome, phone_number=telefone, age=idade)
