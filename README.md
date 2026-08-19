@@ -11,6 +11,15 @@
 
 <br>
 
+## Sumário
+- [Descrição do Projeto](#descrição-do-projeto)
+- [Problema que o projeto busca resolver](#problema-que-o-projeto-busca-resolver)
+- [Instruções de Execução](#instruções-de-execução)
+- [Exemplos de uso](#exemplos-de-uso)
+- [Divisão de tarefas](#divisão-de-tarefas)
+
+<br>
+
 ## Descrição do projeto
 - O projeto consiste no desenvolvimento de um software básico voltado à organização e ao gerenciamento das informações relacionadas aos hóspedes de um hotel. 
 
@@ -33,7 +42,7 @@
 
 ### Pré-requisitos
 
-Para executar o sistema, é necessário ter o [`Python 3.14.7`](https://www.python.org/downloads/) instalado no computador. O projeto não utiliza bibliotecas externas, sendo desenvolvido apenas com recursos nativos da linguagem Python.
+Para executar o sistema, é necessário ter o [`Python 3`](https://www.python.org/downloads/) instalado no computador. O projeto não utiliza bibliotecas externas, sendo desenvolvido apenas com recursos nativos da linguagem Python.
 
 ### 1. Clonar o repositório
 
@@ -69,12 +78,47 @@ Após a execução, o sistema será iniciado no terminal e apresentará as opç�
 
 As informações cadastradas durante a utilização do sistema serão armazenadas nos arquivos `.csv`, permitindo que os dados permaneçam disponíveis mesmo após o encerramento do programa.
 
+
 ### Observações
 
 * Não é necessário instalar bibliotecas externas para executar o projeto.
 * Os arquivos `.csv` fazem parte do funcionamento do sistema e devem ser mantidos.
 * Recomenda-se realizar uma cópia dos arquivos `.csv` antes de alterações manuais ou testes que possam modificar os dados.
 * O sistema deve ser executado a partir do diretório principal do projeto, onde se encontra o arquivo `main.py`.
+
+<br>
+
+## Exemplos de uso
+- Ao utilizar pela primeira vez o sistema, o usuário irá ser recebido com a seguinte mensagem:
+```
+== TELA DE CRIAÇÃO DE USUÁRIO ==
+Não existe nenhum cadastro de login administrativo, deseja criar um? (S/N)
+```
+
+- Respondendo com `S`, o sistema pedirá um usuário e senha para ser gravado como o login administrativo:
+```
+== TELA DE LOGIN ==
+Usuário: Admin
+Senha: 123456
+```
+- Nesse caso, irá ficar salvo o usuário `Admin` com a senha `123456` e após o colocar o login novamente, o usuário será direcionado para o menu principal do projeto:
+```
+== HOTEL - MENU PRINCIPAL ==
+0. Sair
+1. Cadastrar quartos
+2. Excluir quartos
+3. Listar quartos
+4. Cadastrar hóspedes (check-in)
+5. Listar hóspedes
+6. Reservar quartos
+7. Check-out
+8. Consultar reservas
+9. Relatório de faturamento
+10. Histórico de hospedagens
+11. Configuração de login administrativo
+Escolha uma opção:
+```
+- No menu o usuário pode escolher uma das opções e utilizar o software da maneira que mais preferir
 
 <br>
 
