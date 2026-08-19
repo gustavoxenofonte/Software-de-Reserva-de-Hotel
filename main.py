@@ -26,6 +26,7 @@ def menu_principal():
         print("3. Listar quartos")
         print("4. Cadastrar hóspedes")
         print("5. Consultar hóspedes")
+        print("6. Listar hóspedes")
         print("6. Reservar quartos")
         print("7. Check-out")
         print("8. Consultar reservas")
