@@ -50,6 +50,3 @@ def consultar_hospede():
             print(f"Erro no formato do CPF: {e}")
         except Exception as e:
             print(f"Erro inesperado: {e}")
-
-# Executa a busca
-consultar_hospede()

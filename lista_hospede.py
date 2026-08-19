@@ -4,7 +4,7 @@ def lista_hospede():
 
     try:
         # Chama a função do arquivo listarHospedes.py
-        hospedes = listarHospedes()[span_2](start_span)[span_2](end_span)
+        hospedes = listarHospedes()
 
         # Verifica se o banco de dados possui registros
         if not hospedes:

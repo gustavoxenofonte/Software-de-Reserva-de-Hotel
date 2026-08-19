@@ -1,5 +1,7 @@
 from database.adminDatabase.adminExiste import *
 from database.adminDatabase.cadastrarLoginAdministrativo import *
+from time import sleep
+from close import *
 
 def login_adm():
     while True:
@@ -55,6 +57,11 @@ def login_adm():
                         except NullPassword:
                             print("A senha não pode ser vazia, tente novamente")
 
+                    print("Login criado com sucesso")
+                    print("Limpando a tela...")
+
+                    sleep(1.5)
+                    cls()
                     break
 
                 elif opcao.upper() == "N":
